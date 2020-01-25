@@ -1,0 +1,125 @@
+<html>
+    <head>
+        <meta charset="utf-8">
+        <title>Lesson 11-12: игра "Пятнашки"</title>
+        <script src="https://code.jquery.com/jquery-2.1.4.js"></script>
+        <link rel="stylesheet" href="pyatnashki.css">
+    </head>
+    <body>
+        <button type="button" id="shuffleButton" onclick="shuffleTiles()">Перемещать</button>
+        <div id="field">
+            
+        </div>
+        <div id="modal">Победа!</div>
+        
+        <script type="text/javascript">
+            var count = 15;
+            var tiles = [];
+            var freeCell = document.createElement("div");
+            freeCell.x = 3;
+            freeCell.y = 3;
+            createField();
+            createTiles();
+            animateTiles();
+            
+            function checkVictory() {
+                var flag = true;
+                for (var i=0; i<tiles.length-1; i++) {
+                    if (tiles[i].innerHTML != i+1) {
+                        flag = false;
+                    }
+                }
+                if (flag == true) {
+                        var victory = document.getElementById("modal");
+                        victory.classList.add("modal--visible");
+                    }
+            }
+            
+            function shuffleTiles() {
+                for(var i=0; i<100; i++) {
+                    var a = Math.floor(Math.random()*15);
+                    var b = Math.floor(Math.random()*15);
+                    var buffer = tiles[a].innerHTML;
+                    if(buffer=="" || tiles[b].inner=="") {
+                        continue;
+                    }
+                    tiles[a].innerHTML = tiles[b].innerHTML;
+                    tiles[b].innerHTML = buffer;
+                }
+                var button = document.getElementById("shuffleButton");
+                button.style.display = "none";
+            }
+            
+            function tileClick(event) {
+                var bar = event.target;
+                if (between(bar, freeCell)) {
+                    tiles[count].innerHTML = bar.innerHTML;
+                    count = bar.getAttribute("id");
+                    tiles[count].innerHTML = "";
+                    freeCell.x = bar.x;
+                    freeCell.y = bar.y;
+                }
+                checkVictory();
+            }
+            
+            function between(bar, freeCell) {
+                var inColumn = (bar.x == freeCell.x && (bar.y-1 == freeCell.y || bar.y+1 == freeCell.y));
+                var inRow = (bar.y == freeCell.y && (bar.x-1 == freeCell.x || bar.x+1 == freeCell.x));
+                if (inColumn || inRow) {
+                    return true;
+                }
+                else {
+                    return false;
+                }
+            }
+            
+            function animateTiles() {
+                $(".field__cell--tile").on('click', function(event){
+                    tileClick(event); 
+                });
+            }
+            
+            function createTiles() {
+                var cells = document.getElementById("field").getElementsByTagName("div");
+                for (var i=0; i<cells.length; i++) {
+                    var n = cells[i].y *4 + cells[i].x + 1;
+                    cells[i].classList.add("field__cell--tile");
+                    if (i != 15) {
+                        cells[i].innerHTML = n;
+                    }
+                    cells[i].setAttribute("id", i);
+                    tiles.push(cells[i]);
+                }
+            }
+            function appendCell(cell) {
+                var field = document.getElementById("field");
+                field.appendChild(cell);
+            }
+            function setCellOffset(cell) {
+                var width = cell.style.width;
+                var height = cell.style.height;
+                var offset = 2;
+                var left = offset + (offset + width)*cell.x;
+                var top = offset + (offset + height)*cell.y;
+                cell.style.left = left;
+                cell.style.top = top;
+            }
+            function createCellNull() {
+                var cell = document.createElement("div"); //creating div
+                cell.classList.add("field__cell", "field__cell--null"); //creating class for a div
+                return cell;
+            }
+            function createField() { //functtion for creating a cells
+                for (var y=0; y<4; y++) {
+                    for (var x=0; x<4; x++) {
+                        var cell = createCellNull();
+                        cell.x = x; //столбец
+                        cell.y = y; //строка
+                        setCellOffset(cell);
+                        appendCell(cell);
+                    }
+                }
+            } 
+        </script>
+    </body>
+</html>

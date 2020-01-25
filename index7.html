@@ -1,0 +1,94 @@
+<html>
+    <head>
+        <title>бравлер))</title>
+        <meta charset="utf-8">
+        <style type="text/css">
+            .outher1 {
+                border: 3px solid lightgreen;
+                border-radius: 5px;
+            }
+            .inner1 {
+                margin: 10px;
+                width: 100px;
+                height: 100px;
+                float: left;
+                color: white;
+            }
+            .inner-red {
+                background-color: red;
+            }
+            .inner-blue {
+                background-color: blue;
+            }
+            .inner-green {
+                background-color: green;
+            }
+            .pclass {
+                clear: both;
+            }
+            .outher2 {
+                margin-top: 20px;
+                border: 3px solid yellow;
+                height: 200px;
+                border-radius: 5px;
+            }
+            .inner2 {
+                display: inline-block;
+                width: 100px;
+                height: 100px;
+                color: white;
+            }
+            .inner2:active {
+                position: relative;
+                float: 50%;
+                top: -50px;
+            }
+            .outher2 {
+                margin-top: 20px;
+                border: 3px solid yellow;
+                height: 200px;
+                border-radius: 5px;
+            }
+            .inner3 {
+                display: inline-block;
+                width: 100px;
+                height: 100px;
+                color: white;
+            }
+            .inner3:active {
+                position: absolute;
+                width: auto;
+                height: auto;
+                left: 0px;
+                right: 0px;
+                top: 100px;
+                bottom: 100px;
+            }
+            #p1 {
+                z-index
+            }
+        </style>
+    </head>
+    <body>
+        <!-- 1.float -->
+        <div class="outher1">
+            <div class="inner1 inner-red">red</div>
+            <div class="inner1 inner-blue">blue</div>
+            <div class="inner1 inner-green">green</div>
+            <p class="pclass">Ооооочень длинная строка</p>
+        </div>
+        <!-- position -->
+        <div class="outher2">
+            <div class="inner2 inner-red">red</div>
+            <div class="inner2 inner-blue">blue</div>
+        </div>
+        <!-- position ABSOLUTE -->
+        <div class="outher3">
+            <div class="inner3 inner-red">red</div>
+            <div class="inner3 inner-blue">blue</div>
+        </div>
+        <!-- z-index -->
+        <p id="p1">Слой 1</p>
+        <p id="p2">Слой 2</p>
+    </body>
+</html>

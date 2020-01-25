@@ -1,0 +1,27 @@
+.paragraph {
+    font-weight: bold;
+}
+#h1 {
+    color: aqua;
+}
+h2, h3 {
+    background-color: beige
+}
+.menu {
+    display: inline-block;
+    border: 20px solid black;
+    padding: 10px;
+    font-size: 70px;
+    border-left-style: hidden;
+    border-right-style: hidden;
+}
+.menu:hover {
+    
+}
+.menu:active {
+    background-color: aquamarine;
+}
+a:active {
+    color: coral;
+}
+a:

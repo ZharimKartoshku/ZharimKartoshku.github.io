@@ -1,0 +1,64 @@
+html, body {
+    height: 100%;
+}
+
+#field {
+    width: 800px;
+    height: 800px;
+    background-color: darkorchid;
+    padding-left: 15px;
+    position: absolute;
+    left: 25%;    
+}
+.field__cell {
+    width: 180px;
+    height: 180px;
+    position: relative;
+    float: left;
+    margin: 7px;
+}
+.field__cell--null {
+    background-color: blue;
+}
+.field__cell--tile {
+    color: white;
+    font-size: 50px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    align-content: space-between;
+    flex-direction: column;
+}
+button {
+    background-color: darkorchid;
+    border-radius: 10px;
+    padding: 10px;
+    color: white;
+    font-weight: bold;
+    cursor: pointer;
+}
+button:active {
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
+}
+#modal {
+     width: 800px;
+    height: 800px;
+    background: rgba(0, 0, 0, 0.5);
+    padding-left: 15px;
+    position: absolute;
+    left: 25%;
+    visibility: hidden;
+    opacity: 0;
+    z-index: 1;
+    color: white;
+    font-weight: bold;
+    font-size: 90px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+}
+#modal.modal--visible {
+    visibility: visible;
+    opacity: 1;
+}

@@ -1,0 +1,36 @@
+html, body {
+    height: 100%;
+    margin: 0;
+}
+body {
+    display: flex;
+    justify-content: center;
+    align-content: center;
+    font-family: sans-serif;
+}
+#container {
+    width: 800px;
+}
+#questions {
+    width: 500px;
+    height: 60px;
+    padding: 20px;
+    border-radius: 20px;
+    background: radial-gradient(black, blue);
+    color: white;
+}
+.answers {
+    padding: 10px;
+    margin: 10px;
+    width: 250px;
+    color: white;
+    background: radial-gradient(black, blue);
+    border-radius: 20px;
+    justify-content: center;
+}
+.answers:active {
+    background: radial-gradient(red, yellow);
+}
+#result {
+    visibility: hidden;
+}
